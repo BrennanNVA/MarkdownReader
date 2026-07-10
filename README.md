@@ -31,13 +31,19 @@ Markdown Reader gives you a live rendered preview beside the Markdown source, ac
 - Local images and links resolved relative to the Markdown file
 - Familiar Windows keyboard shortcuts
 
-## Requirements
+## Download for Windows
+
+For the easiest setup, open the [latest GitHub Release](https://github.com/BrennanNVA/MarkdownReader/releases/latest), download `MarkdownReader-v0.1.0-windows-x64.zip`, extract the entire folder, and run **`Markdown Reader.exe`**.
+
+The portable release does not require Python, `uv`, or an installer.
+
+## Requirements for running from source
 
 - Windows 10 or Windows 11
 - Python 3.11 or newer
 - [`uv`](https://docs.astral.sh/uv/getting-started/installation/)
 
-## Quick start
+## Run from source
 
 1. Download or clone this repository:
 
