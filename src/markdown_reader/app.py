@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 from PySide6.QtCore import QSettings, QTimer, Qt, QUrl
-from PySide6.QtGui import QAction, QActionGroup, QCloseEvent, QDesktopServices, QFont, QKeySequence, QTextDocument
+from PySide6.QtGui import QAction, QActionGroup, QCloseEvent, QDesktopServices, QFont, QIcon, QKeySequence, QTextDocument
 from PySide6.QtPrintSupport import QPrinter
 from PySide6.QtWidgets import (
     QApplication,
@@ -25,6 +25,7 @@ from PySide6.QtWidgets import (
 )
 
 APP_NAME = "Markdown Reader"
+ICON_PATH = Path(__file__).resolve().parent / "assets" / "icon.png"
 MARKDOWN_FILTER = "Markdown files (*.md *.markdown *.mdown *.mkd);;All files (*.*)"
 MARKDOWN_EXTENSIONS = {".md", ".markdown", ".mdown", ".mkd"}
 WELCOME = """# Markdown Reader
@@ -51,6 +52,7 @@ a { color: #0969da; }
 class MarkdownWindow(QMainWindow):
     def __init__(self, initial_path: str | None = None) -> None:
         super().__init__()
+        self.setWindowIcon(QIcon(str(ICON_PATH)))
         self.settings = QSettings("HermesTools", APP_NAME)
         self.current_path: Path | None = None
         self.dirty = False
@@ -515,6 +517,7 @@ def main() -> int:
     app = QApplication(sys.argv)
     app.setApplicationName(APP_NAME)
     app.setOrganizationName("HermesTools")
+    app.setWindowIcon(QIcon(str(ICON_PATH)))
     app.setStyle("Fusion")
     initial_path = sys.argv[1] if len(sys.argv) > 1 else None
     window = MarkdownWindow(initial_path)

@@ -1,6 +1,18 @@
-# Markdown Reader
+<p align="center">
+  <img src="docs/markdown-reader-logo.png" width="190" alt="Markdown Reader logo">
+</p>
 
-A simple, lightweight desktop application for reading and editing Markdown files on Windows.
+<h1 align="center">Markdown Reader</h1>
+
+<p align="center">
+  A simple, lightweight desktop application for reading and editing Markdown files on Windows.
+</p>
+
+<p align="center">
+  <a href="https://github.com/BrennanNVA/MarkdownReader/actions/workflows/tests.yml"><img src="https://github.com/BrennanNVA/MarkdownReader/actions/workflows/tests.yml/badge.svg" alt="Tests"></a>
+  <img src="https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white" alt="Python 3.11+">
+  <img src="https://img.shields.io/badge/License-MIT-8B5CF6" alt="MIT License">
+</p>
 
 Markdown Reader gives you a live rendered preview beside the Markdown source, accepts files by drag-and-drop, and can export the finished document directly to PDF. It is built with Python and PySide6 and does not require a web browser or server.
 
@@ -76,7 +88,7 @@ Double-click **`build_exe.bat`**, or run:
 
 ```bash
 uv sync --extra dev
-uv run pyinstaller --noconfirm --clean --windowed --name "Markdown Reader" --paths src src/markdown_reader/app.py
+uv run pyinstaller --noconfirm --clean --windowed --name "Markdown Reader" --paths src --icon src/markdown_reader/assets/icon.ico --add-data "src/markdown_reader/assets/icon.png;markdown_reader/assets" src/markdown_reader/app.py
 ```
 
 The portable application will be created at:

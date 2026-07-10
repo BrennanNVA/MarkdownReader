@@ -27,6 +27,10 @@ def test_open_renders_markdown(window, tmp_path):
     assert not window.dirty
 
 
+def test_window_has_application_icon(window):
+    assert not window.windowIcon().isNull()
+
+
 def test_edit_marks_dirty_and_save_writes_utf8(window, tmp_path):
     source = tmp_path / "notes.md"
     source.write_text("Original", encoding="utf-8")
