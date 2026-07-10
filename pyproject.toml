@@ -1,8 +1,9 @@
 [project]
 name = "markdown-reader"
 version = "0.1.0"
-description = "A small native desktop Markdown reader and editor"
+description = "A simple, lightweight desktop Markdown reader and editor"
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.11"
 dependencies = [
   "PySide6>=6.8,<7",
