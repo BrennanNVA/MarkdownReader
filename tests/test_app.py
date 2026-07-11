@@ -31,6 +31,14 @@ def test_window_has_application_icon(window):
     assert not window.windowIcon().isNull()
 
 
+def test_markdown_drop_events_reach_the_window(window):
+    assert window.acceptDrops()
+    assert not window.editor.acceptDrops()
+    assert not window.editor.viewport().acceptDrops()
+    assert not window.preview.acceptDrops()
+    assert not window.preview.viewport().acceptDrops()
+
+
 def test_edit_marks_dirty_and_save_writes_utf8(window, tmp_path):
     source = tmp_path / "notes.md"
     source.write_text("Original", encoding="utf-8")

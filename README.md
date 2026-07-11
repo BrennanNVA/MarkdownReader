@@ -33,7 +33,7 @@ Markdown Reader gives you a live rendered preview beside the Markdown source, ac
 
 ## Download for Windows
 
-For the easiest setup, open the [latest GitHub Release](https://github.com/BrennanNVA/MarkdownReader/releases/latest), download `MarkdownReader-v0.1.0-windows-x64.zip`, extract the entire folder, and run **`Markdown Reader.exe`**.
+For the easiest setup, open the [latest GitHub Release](https://github.com/BrennanNVA/MarkdownReader/releases/latest), download `MarkdownReader-v0.1.1-windows-x64.zip`, extract the entire folder, and run **`Markdown Reader.exe`**.
 
 The portable release does not require Python, `uv`, or an installer.
 
@@ -114,7 +114,7 @@ uv sync --extra dev
 uv run pytest
 ```
 
-The tests cover Markdown loading and rendering, UTF-8 editing and saving, Save As, view and zoom controls, and real PDF generation.
+The tests cover drag-and-drop routing, Markdown loading and rendering, UTF-8 editing and saving, Save As, view and zoom controls, and real PDF generation.
 
 ## Technology
 

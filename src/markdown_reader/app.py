@@ -82,12 +82,18 @@ class MarkdownWindow(QMainWindow):
 
         self.splitter = QSplitter(Qt.Orientation.Horizontal)
         self.editor = QPlainTextEdit()
+        # QPlainTextEdit accepts text drops by default, which prevents file drops
+        # over the editor from reaching MarkdownWindow.dropEvent.
+        self.editor.setAcceptDrops(False)
         self.editor.setPlaceholderText("Open or drop a Markdown file, then edit its source here…")
         self.editor.setLineWrapMode(QPlainTextEdit.LineWrapMode.WidgetWidth)
         self.editor.setFont(QFont("Consolas", 11))
         self.editor.textChanged.connect(self._on_text_changed)
 
         self.preview = QTextBrowser()
+        # QTextBrowser also accepts drops by default; let the main window handle
+        # them so dropping works across both panes.
+        self.preview.setAcceptDrops(False)
         self.preview.setOpenLinks(False)
         self.preview.anchorClicked.connect(self._open_link)
         self.preview.document().setDefaultStyleSheet(PREVIEW_CSS)
@@ -499,7 +505,7 @@ class MarkdownWindow(QMainWindow):
         QMessageBox.about(
             self,
             f"About {APP_NAME}",
-            "<b>Markdown Reader 0.1</b><br><br>"
+            "<b>Markdown Reader 0.1.1</b><br><br>"
             "A small native Markdown reader and editor with live preview, "
             "drag-and-drop, PDF export, search, and zoom.",
         )
