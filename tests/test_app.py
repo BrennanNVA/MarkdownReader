@@ -1,6 +1,8 @@
 from pathlib import Path
 
 import pytest
+from PySide6.QtCore import QUrl
+from PySide6.QtGui import QDesktopServices
 from PySide6.QtWidgets import QFileDialog
 
 from markdown_reader.app import MarkdownWindow
@@ -95,3 +97,31 @@ def test_pdf_export_creates_nonempty_file(window, tmp_path, monkeypatch):
     assert output.exists()
     assert output.stat().st_size > 100
     assert output.read_bytes().startswith(b"%PDF")
+
+
+def test_open_link_preserves_fragment_for_relative_file(window, tmp_path, monkeypatch):
+    source = tmp_path / "index.md"
+    source.write_text("[Details](chapter.md#details)", encoding="utf-8")
+    target = tmp_path / "chapter.md"
+    target.write_text("# Details", encoding="utf-8")
+    opened: list[QUrl] = []
+    monkeypatch.setattr(QDesktopServices, "openUrl", lambda url: opened.append(url) or True)
+    window.open_path(source)
+
+    window._open_link(QUrl("chapter.md#details"))
+
+    assert len(opened) == 1
+    assert Path(opened[0].toLocalFile()) == target.resolve()
+    assert opened[0].fragment() == "details"
+
+
+def test_open_link_keeps_document_anchor_in_preview(window, tmp_path, monkeypatch):
+    source = tmp_path / "index.md"
+    source.write_text("# Details\n\n[Jump to details](#details)", encoding="utf-8")
+    opened: list[QUrl] = []
+    monkeypatch.setattr(QDesktopServices, "openUrl", lambda url: opened.append(url) or True)
+    window.open_path(source)
+
+    window._open_link(QUrl("#details"))
+
+    assert opened == []

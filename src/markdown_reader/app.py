@@ -454,7 +454,13 @@ class MarkdownWindow(QMainWindow):
 
     def _open_link(self, url: QUrl) -> None:
         if url.isRelative() and self.current_path:
-            url = QUrl.fromLocalFile(str((self.current_path.parent / url.toString()).resolve()))
+            if not url.path() and url.hasFragment():
+                self.preview.scrollToAnchor(url.fragment())
+                return
+            target = QUrl.fromLocalFile(str((self.current_path.parent / url.path()).resolve()))
+            target.setQuery(url.query())
+            target.setFragment(url.fragment())
+            url = target
         QDesktopServices.openUrl(url)
 
     def _recent_paths(self) -> list[str]:
@@ -505,7 +511,7 @@ class MarkdownWindow(QMainWindow):
         QMessageBox.about(
             self,
             f"About {APP_NAME}",
-            "<b>Markdown Reader 0.1.1</b><br><br>"
+            "<b>Markdown Reader 0.1.2</b><br><br>"
             "A small native Markdown reader and editor with live preview, "
             "drag-and-drop, PDF export, search, and zoom.",
         )
