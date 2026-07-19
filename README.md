@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/BrennanNVA/MarkdownReader/actions/workflows/tests.yml"><img src="https://github.com/BrennanNVA/MarkdownReader/actions/workflows/tests.yml/badge.svg" alt="Tests"></a>
+  <a href="https://github.com/VesperEngineering/MarkdownReader/actions/workflows/tests.yml"><img src="https://github.com/VesperEngineering/MarkdownReader/actions/workflows/tests.yml/badge.svg" alt="Tests"></a>
   <img src="https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white" alt="Python 3.11+">
   <img src="https://img.shields.io/badge/License-MIT-8B5CF6" alt="MIT License">
 </p>
@@ -33,7 +33,7 @@ Markdown Reader gives you a live rendered preview beside the Markdown source, ac
 
 ## Download for Windows
 
-For the easiest setup, open the [latest GitHub Release](https://github.com/BrennanNVA/MarkdownReader/releases/latest), download `MarkdownReader-v0.1.1-windows-x64.zip`, extract the entire folder, and run **`Markdown Reader.exe`**.
+For the easiest setup, open the [latest GitHub Release](https://github.com/VesperEngineering/MarkdownReader/releases/latest), download `MarkdownReader-v0.1.2-windows-x64.zip`, extract the entire folder, and run **`Markdown Reader.exe`**.
 
 The portable release does not require Python, `uv`, or an installer.
 
@@ -48,7 +48,7 @@ The portable release does not require Python, `uv`, or an installer.
 1. Download or clone this repository:
 
    ```bash
-   git clone https://github.com/BrennanNVA/MarkdownReader.git
+   git clone https://github.com/VesperEngineering/MarkdownReader.git
    cd MarkdownReader
    ```
 
